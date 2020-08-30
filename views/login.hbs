@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <title>Node MySQL</title>
+</head>
+
+<body>
+    <nav>
+        <h4> Node MySQL </h4>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+        </ul>
+    </nav>
+
+    <div class="container mt-3">
+
+        <div class="card">
+            <div class="card-header">
+                Login Form
+            </div>
+            <div class="card-body">
+                <form action="/auth/login" method="POST">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+
+
+        {{#if message}}
+        <h4 class='alert alert-danger mt-4'>
+            {{message}}
+        </h4>
+        {{/if}}
+        {{#if loggedIn}}
+        <h4 class='alert alert-success mt-4'>
+            {{loggedIn}}
+        </h4>
+        {{/if}}
+    </div>
+    <div class="container mt-4">
+        <div id="fb-root">
+            <script async defer crossorigin="anonymous"
+                src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0&appId=349298452899511&autoLogAppEvents=1"
+                nonce="CDbc74vf"></script>
+            <div class="fb-login-button" data-size="medium" data-button-type="continue_with" data-layout="rounded"
+                data-auto-logout-link="true" data-use-continue-as="true" data-width=""></div>
+            <script>
+                window.fbAsyncInit = function () {
+                    FB.init({
+                        appId: '349298452899511',
+                        cookie: true,
+                        xfbml: true,
+                        version: '{api-version}'
+                    });
+
+                    FB.AppEvents.logPageView();
+
+                };
+
+                (function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) { return; }
+                    js = d.createElement(s); js.id = id;
+                    js.src = "https://connect.facebook.net/en_US/sdk.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
